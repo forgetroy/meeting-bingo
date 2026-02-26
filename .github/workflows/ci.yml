@@ -75,6 +75,9 @@ jobs:
           url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$url" >> "$GITHUB_OUTPUT"
 
+      - name: Alias to staging URL
+        run: vercel alias ${{ steps.deploy.outputs.url }} meeting-bingo-staging.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+
   deploy-preview:
     name: Deploy Preview
     needs: check
