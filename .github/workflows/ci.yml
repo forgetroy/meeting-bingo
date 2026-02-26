@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -47,6 +47,7 @@ jobs:
     name: Deploy to Staging
     needs: check
     if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/staging') ||
       github.event_name == 'pull_request' ||
       (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
     runs-on: ubuntu-latest
