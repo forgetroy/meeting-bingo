@@ -83,8 +83,8 @@ jobs:
       - name: Alias to staging URL
         id: alias
         run: |
-          vercel alias ${{ steps.deploy.outputs.url }} meeting-bingo-staging.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
-          echo "url=https://meeting-bingo-staging.vercel.app" >> "$GITHUB_OUTPUT"
+          vercel alias ${{ steps.deploy.outputs.url }} staging-meeting-bingo-troys-projects-0b3ac865.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+          echo "url=https://staging-meeting-bingo-troys-projects-0b3ac865.vercel.app" >> "$GITHUB_OUTPUT"
 
       - name: Comment staging URL on PR
         if: github.event_name == 'pull_request'
